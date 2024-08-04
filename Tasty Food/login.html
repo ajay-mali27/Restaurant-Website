@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Login</title>
+    <style>
+     body {
+         margin: 0;
+         padding: 0;
+         font-family: 'Arial', sans-serif;
+         background: linear-gradient(to bottom right, rgb(243, 244, 240), #070700); /* Gradient background */
+         color: #a92323;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+     }
+
+     .login-container {
+         background: rgba(255, 255, 255, 0.9);
+         /* background: black; */
+         padding: 60px;
+         /* border-radius: 50%;  */
+         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+         width: 400px; /* Increased width */
+         height: 276px; /* Increased height */
+         text-align: center;
+     }
+
+     h1 {
+         font-size: 2em;
+         margin-bottom: 20px;
+         color: #111011; /* Lighter purple */
+     }
+
+     input {
+         width: 80%;
+         padding: 10px; /* Adjusted padding */
+         margin-bottom: 10px; /* Adjusted margin */
+         border: none;
+         border-radius: 8px;
+         outline: none;
+     }
+
+     button {
+         width: 100%;
+         padding: 15px;
+         background: #201f20; /* Lighter purple */
+         color: #f5f2f2;
+         border: none;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: background 0.3s;
+     }
+
+     button:hover {
+         background: rgb(57, 173, 18); /* Pink on hover */
+     }
+
+     p {
+         margin-top: 20px;
+         font-size: 0.9em;
+         color: #010000; /* Gray text color */
+     }
+
+     a {
+         color: #145c23; /* Lighter purple */
+         text-decoration: none;
+         font-weight: bold;
+     }
+
+     a:hover {
+         text-decoration: underline;
+     }
+ </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form onsubmit="return validateForm()">
+            <input type="email" id="email" placeholder="Email">
+            <div id="emailError" class="error"></div>
+            <input type="password" id="password" placeholder="Password">
+            <div id="passwordError" class="error"></div>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="sign_up.html">Sign up</a></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Reset error messages
+            document.getElementById('emailError').innerHTML = '';
+            document.getElementById('passwordError').innerHTML = '';
+
+            // Email validation
+            if (!email || email.indexOf('@') === -1) {
+                document.getElementById('emailError').innerHTML = 'Please enter a valid email address';
+                return false;
+            }
+
+            // Password validation
+            if (!password || password.length < 6) {
+                document.getElementById('passwordError').innerHTML = 'Password must be at least 6 characters';
+                return false;
+            }
+
+            // If everything is valid, allow the form submission
+            alert('Form submitted successfully!');
+            return true;
+        }
+    </script>
+
+</body>
+</html>

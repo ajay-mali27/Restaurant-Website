@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Signup</title>
+    <style>
+     
+          body {
+              margin: 0;
+              padding: 0;
+              font-family: 'Arial', sans-serif;
+              background: linear-gradient(to bottom right, #fafafc, #000105); /* Gradient background */
+              color: #fff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+          }
+  
+          .signup-container {
+              background: rgba(77, 75, 75, 0.8);
+              padding: 30px;
+              border-radius: 30px;
+              box-shadow: 0 0 90px rgba(0, 0, 0, 0.3);
+              width: 300px;
+              text-align: center;
+          }
+  
+          h1 {
+              font-size: 2em;
+              margin-bottom: 20px;
+              color: #030306; /* Dark purple */
+          }
+  
+          input {
+              width: 80%;
+              padding: 15px;
+              margin-bottom: 20px;
+              border: none;
+              border-radius: 8px;
+              outline: none;
+          }
+  
+          button {
+              width: 100%;
+              padding: 15px;
+              background: #5a5b61; /* Dark purple */
+              color: #0c0c0c;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: background 0.3s;
+          }
+  
+          button:hover {
+              background: #3fb33f; /* Darker purple on hover */
+          }
+  
+          p {
+              margin-top: 20px;
+              font-size: 0.9em;
+          }
+  
+          a {
+              color: #000000; /* Dark blue */
+              text-decoration: none;
+              font-weight: bold;
+          }
+  
+          a:hover {
+              text-decoration: underline;
+          }
+      </style>
+    
+</head>
+<body>
+
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form onsubmit="return validateForm()">
+            <input type="text" id="fullName" placeholder="Full Name">
+            <div id="fullNameError" class="error"></div>
+            <input type="email" id="email" placeholder="Email">
+            <div id="emailError" class="error"></div>
+            <input type="password" id="password" placeholder="Password">
+            <div id="passwordError" class="error"></div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById('fullName').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Reset error messages
+            document.getElementById('fullNameError').innerHTML = '';
+            document.getElementById('emailError').innerHTML = '';
+            document.getElementById('passwordError').innerHTML = '';
+
+            // Full Name validation
+            if (!fullName) {
+                document.getElementById('fullNameError').innerHTML = 'Please enter your full name';
+                return false;
+            }
+
+            // Email validation
+            if (!email || email.indexOf('@') === -1) {
+                document.getElementById('emailError').innerHTML = 'Please enter a valid email address';
+                return false;
+            }
+
+            // Password validation
+            if (!password || password.length < 6) {
+                document.getElementById('passwordError').innerHTML = 'Password must be at least 6 characters';
+                return false;
+            }
+
+            // If everything is valid, allow the form submission
+            alert('Sign up successful!');
+            return true;
+        }
+    </script>
+
+</body>
+</html>
